@@ -1,0 +1,3 @@
+= Asciidoctorj PDF invoice generator
+
+described here: http://jakub.marchwicki.pl/posts/2017/01/28/asciidoctor-based-invoices/

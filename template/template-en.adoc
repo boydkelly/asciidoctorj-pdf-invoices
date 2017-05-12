@@ -1,0 +1,126 @@
+= Invoice
+Jakub Marchwicki <jakub@marchwicki.pl>
+:notitle:
+:nofooter:
+
+// nagłówek
+== Invoice {invoice-number}
+
+// daty
+[cols=">", frame="none"]
+|===
+| Invoice date: {date} +
+Delivery date: {date}
+|===
+
+// sprzedawca i nabywca
+[options="header", frame="none", grid="rows"]
+|===
+| Company details | Bill to
+
+| *You company name* +
+location +
+tax number +
+{zwsp} +
+*Account number* +
+mBank +
+PL 52 1140 0000 0000 0000 0000 9999 +
+SWIFT: XXXYYYYZZZZ
+
+| {client}
+
+|===
+
+// pozycje faktury
+[cols="<.>40,^.>6,>.>12,>.>12,>.>12,>.>12,>.>6", options="header", frame="topbot"]
+|===
+<| Item
+^| Qty
+^| Net price
+^| Net Amount
+^| VAT Amount
+^| Total +
+amount
+^| VAT
+
+ifdef::position-0-element[]
+| {position-0-element}
+| {position-0-quantity} {position-0-unit}
+| {position-0-unit-price}
+| {position-0-position-total}
+| {position-0-position-tax}
+| {position-0-position-total-gross}
+| {position-0-tax}
+endif::[]
+
+ifdef::position-1-element[]
+| {position-1-element}
+| {position-1-quantity} szt
+| {position-1-unit-price}
+| {position-1-position-total}
+| {position-1-position-tax}
+| {position-1-position-total-gross}
+| {position-1-tax}
+endif::[]
+
+|===
+
+[cols="<.>40,^.>6,>.>12,>.>12,>.>12,>.>12,>.>6", options="noheader", grid="none", frame="none"]
+|===
+// suma
+s| Total price:
+| {zwsp}
+| {zwsp}
+s| {total-amount-net}
+s| {total-amount-tax}
+s| {total-amount-gross}
+| {zwsp}
+
+// w tym
+7+|including:
+
+ifdef::vat-23-net[]
+| {zwsp}
+| {zwsp}
+| {zwsp}
+| {vat-23-net}
+| {vat-23-tax}
+| {vat-23-gross}
+| 23%
+endif::[]
+
+ifdef::vat-0-net[]
+| {zwsp}
+| {zwsp}
+| {zwsp}
+| {vat-0-net}
+| {vat-0-tax}
+| {vat-0-gross}
+| 0%
+endif::[]
+
+ifdef::vat-na-net[]
+| {zwsp}
+| {zwsp}
+| {zwsp}
+| {vat-na-net}
+| {vat-na-tax}
+| {vat-na-gross}
+| n/a
+endif::[]
+
+
+|===
+
+'''
+
+=== Amount due: {total-amount-gross} €
+
+*Sum of*: {total-amount-words-en} +
+*Way of payment*: transfer +
+*Due date*: {due-date}
+
+ifdef::notes[]
+.Notes
+{notes}
+endif::[]

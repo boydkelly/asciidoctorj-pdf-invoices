@@ -1,0 +1,15 @@
+invoice-number: FV/0001/2017
+status: niezapłacone
+date: 2017-01-31
+due-date: 2017-02-31
+client: |
+  ACME Corp +
+  Washington DC +
+  USA 
+positions:
+  - element: Coding
+    unit: lines
+    quantity: 1234
+    unit-price: 42
+    tax: 23%
+notes: "Just works"
